@@ -9,3 +9,4 @@ runs:
   steps:
     - name: Replace content width css
       run: sed -ri 's|--ls-main-content-max-width:\s*\w*|--ls-main-content-max-width:${{ inputs.content-width }}|g' "${{ github.workspace }}/www/static/css/style.css"
+      shell: bash

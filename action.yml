@@ -1,0 +1,11 @@
+name: Logseq adjust Content Width
+description: A postprocessor for logseq-spa. Adjusts the width of the website content
+inputs:
+  content-width:
+    description: If drawings should be exported in dark mode
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Replace content width css
+      run: sed -ri 's|--ls-main-content-max-width:\s*\w*|--ls-main-content-max-width:${{ inputs.content-width }}|g' "${{ github.workspace }}/www/static/css/style.css"
